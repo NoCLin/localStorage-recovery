@@ -28,7 +28,9 @@ leveldb
 ## 示例数据
 
 bytearray：`b'\x00,{\x8cN!k\x84vpenc'` 
+
 Unicode：`\u7b2c\u4e8c\u6b21\u7684\u6570\u636e`
+
 中文：第二次的数据
 
 
@@ -42,7 +44,7 @@ Unicode：`\u7b2c\u4e8c\u6b21\u7684\u6570\u636e`
 ## 解码处理
 
 1. 去掉第一个\x00 
-2. 剩余bytes 两两倒序以hex组合 (`,{` == `\x2c\x7b` => `\u7b2c` => `第`)
+2. 剩余bytes 两两倒序以hex组合成一个Unicode (`,{` == `\x2c\x7b` => `\u7b2c` => `第`)
 
 ## 工具链
 
@@ -55,3 +57,5 @@ Unicode：`\u7b2c\u4e8c\u6b21\u7684\u6570\u636e`
     请参考：https://blog.csdn.net/gold2008/article/details/70837495
     
 - leveldb python leveldb库
+    > 这个库只能读取文件夹，不能读取.ldb文件，因此最好使用ldbdump读取
+

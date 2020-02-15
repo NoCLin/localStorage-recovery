@@ -1,1 +1,4 @@
 ignore
+.idea
+.DS_Store
+ldbdump_base64
