@@ -2,8 +2,6 @@ import base64
 import subprocess
 import sys
 
-from ls_decode import ls_decode
-
 if __name__ == '__main__':
 
     ldb_file = sys.argv[1]
@@ -15,6 +13,24 @@ if __name__ == '__main__':
         k_ = base64.b64decode(k)
         v_ = base64.b64decode(v)
         print("Key:", k_)
-        true_value = ls_decode(v_[1:])
+
+        print("Value bytes:", v_)
+        if len(v_) < 2:
+            print()
+            print("=" * 10)
+            continue
+
+        flag = v_[0]
+        value = v_[1:]
+        if flag == 0:
+            true_value = value.decode("utf_16_le")
+        elif flag == 1:
+            true_value = value.decode()
+        else:
+            print("Unknown Format")
+            true_value = value
+
         print("Value:", true_value)
+
         print()
+        print("=" * 10)
